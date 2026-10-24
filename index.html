@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang=zh-CN>
+<html lang="zh-CN">
 <head>
-    <meta charset=UTF-8>
-    <meta name=viewport content=width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no>
-    <title>送给董同学的祝福 🌸</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>送给悦同学的祝福 🌸</title>
     <style>
          * {
             margin: 0;
@@ -91,9 +91,11 @@
             opacity: 0.6;
             animation: ringFloat 4.2s ease-in-out infinite;
         }
+        .ring-1 { top: 4%; left: 50%; transform: translateX(-50%); animation-delay:0s; }
         .ring-2 { top: 14%; right: -18px; animation-delay: 0.4s; }
         .ring-3 { top: 38%; right: -24px; animation-delay: 0.8s; }
         .ring-4 { bottom: 30%; right: -18px; animation-delay: 1.2s; }
+        .ring-5 { bottom: 8%; left:50%; transform: translateX(-50%); animation-delay:1.6s;}
         .ring-6 { bottom: 30%; left: -18px; animation-delay: 2s; }
         .ring-7 { top: 38%; left: -24px; animation-delay: 2.4s; }
         .ring-8 { top: 14%; left: -18px; animation-delay: 2.8s; }
@@ -315,71 +317,73 @@
     </style>
 </head>
 <body>
-    <div class=container>
-        <div class=heart-bg>
+    <div class="container">
+        <div class="heart-bg">
             🌸🐱🌼🐏🌷🦋💐🐿️🌸🦊
             🌷🐶💐🦋🌼🐇🌸🐱🌷🐿️
             🐏🌼💐🦊🌸🐶🌷🐇🦋🌼
             💐🐱🌷🐿️🦋🌸🐏🌼🐇🌷
         </div>
         <div></div>
-        <div class=content>
-            <h1>给董的小祝福 🌸</h1>
-            <div class=hearts>🌸 🌼 🐏 🌷 🦋</div>
+        <div class="content">
+            <h1>给悦的小祝福 🌸</h1>
+            <div class="hearts">🌸 🌼 🐏 🌷 🦋</div>
             <!--画布，渲染动态泡泡-->
-            <div style=position:relative;>
-                <canvas id=flowerCanvas width=340 height=360></canvas>
-                <!-- =========外圈小花环DOM 新流行图标 ========= -->
-                <div class=flower-ring>
-                    <span class=ring-icon ring-2>🫧</span>
-                    <span class=ring-icon ring-3>🦋</span>
-                    <span class=ring-icon ring-4>🍡</span>
-                    <span class=ring-icon ring-6>🎀</span>
-                    <span class=ring-icon ring-7>🐏</span>
-                    <span class=ring-icon ring-8>⭐</span>
+            <div style="position:relative;">
+                <canvas id="flowerCanvas" width="340" height="360"></canvas>
+                <!-- =========外圈小花环DOM 完整8个图标环绕 ========= -->
+                <div class="flower-ring">
+                    <span class="ring-icon ring-1">✨</span>
+                    <span class="ring-icon ring-2">🫧</span>
+                    <span class="ring-icon ring-3">🦋</span>
+                    <span class="ring-icon ring-4">🍡</span>
+                    <span class="ring-icon ring-5">💫</span>
+                    <span class="ring-icon ring-6">🎀</span>
+                    <span class="ring-icon ring-7">🐏</span>
+                    <span class="ring-icon ring-8">⭐</span>
                 </div>
             </div>
             <div></div>
-            <div class=progress-bar>
-                <div class=progress-fill id=progressFill></div>
-                <div class=progress-heart id=progressHeart>🐏</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+                <div class="progress-heart" id="progressHeart">🐏</div>
             </div>
-            <p class=message>正在初始化祝福程序~</p>
-            <button class=btn id=blessingBtn disabled>准备中（0）</button>
+            <p class="message">正在初始化祝福程序~</p>
+            <button class="btn" id="blessingBtn" disabled>准备中（0）</button>
             <!--新增音乐暂停播放切换按钮-->
-            <button class=music-toggle-btn id=musicToggleBtn>🔇音乐尚未播放</button>
-            <p class=footer>专属于你的祝福程序</p>
-            <audio id=bgMusic loop preload=auto>
-                <source src=missyouhani.mp3 type=audio/mpeg>
-                <source src=missyouhani.ogg type=audio/ogg>
+            <button class="music-toggle-btn" id="musicToggleBtn">🔇音乐尚未播放</button>
+            <p class="footer">专属于你的祝福程序</p>
+            <audio id="bgMusic" loop preload="auto">
+                <source src="missyouhani.mp3" type="audio/mpeg">
+                <source src="missyouhani.ogg" type="audio/ogg">
                 您的浏览器不支持音频播放
             
         </div>
     </div>
-    <div class=popup-template style=display: none;>
-        <div class=popup-content>
-            <div class=decoration style=top: 10px; left: 15px;>🌸</div>
-            <div class=decoration style=top: 15px; right: 20px;>🌼</div>
-            <div class=decoration style=bottom: 40px; left: 20px;>🦋</div>
-            <div class=decoration style=bottom: 35px; right: 15px;>🐏</div>
-            <div class=popup-title>✨想对董说的悄悄话 ✨</div>
-            <div class=popup-message></div>
-            <button class=popup-close>🌸 关闭</button>
-            <div class=popup-countdown>⏳ 10秒后关闭</div>
+    <div class="popup-template" style="display: none;">
+        <div class="popup-content">
+            <div class="decoration" style="top: 10px; left: 15px;">🌸</div>
+            <div class="decoration" style="top: 15px; right: 20px;">🌼</div>
+            <div class="decoration" style="bottom: 40px; left: 20px;">🦋</div>
+            <div class="decoration" style="bottom: 35px; right: 15px;">🐏</div>
+            <div class="popup-title">✨想对悦说的悄悄话 ✨</div>
+            <div class="popup-message"></div>
+            <button class="popup-close">🌸 关闭</button>
+            <div class="popup-countdown">⏳ 10秒后关闭</div>
         </div>
     </div>
-    <div class=wait-popup-template style=display: none;>
-        <div class=popup-content wait-popup>
-            <div class=decoration style=top: 10px; right: 15px;>🌷</div>
-            <div class=popup-title>稍等一下下~</div>
-            <div class=popup-message></div>
-            <button class=popup-close>知道啦~</button>
-            <div class=popup-countdown>⏳ 4秒后自动关闭</div>
+    <div class="wait-popup-template" style="display: none;">
+        <div class="popup-content wait-popup">
+            <div class="decoration" style="top: 10px; right: 15px;">🌷</div>
+            <div class="popup-title">稍等一下下~</div>
+            <div class="popup-message"></div>
+            <button class="popup-close">知道啦~</button>
+            <div class="popup-countdown">⏳ 4秒后自动关闭</div>
         </div>
     </div>
     <!--彩蛋图片弹窗，引用外部egg.jpg-->
-    <div id=eggOverlay>
-        <img src=egg.jpg alt=彩蛋>
+    <div id="eggOverlay">
+        <img src="egg.jpg" alt="彩蛋">
     </div>
     <script>
          // ============【汽水冒泡动画 + 音频律动】============
@@ -387,7 +391,6 @@
         const ctx = canvas.getContext('2d');
         let time = 0;
         let bubbles = [];
-
         //音频分析全局
         let audioCtx = null;
         let analyser = null;
@@ -395,10 +398,8 @@
         let spectrumData = null;
         let beatScale = 1.0;
         const smoothFactor = 0.08;
-
         //音乐切换按钮
         const musicToggleBtn = document.getElementById('musicToggleBtn');
-
         //外圈小花环更新缩放函数
         function updateRingScale(scaleVal){
             const icons = document.querySelectorAll('.ring-icon');
@@ -406,7 +407,6 @@
                 el.style.transform = `scale(${scaleVal})`;
             })
         }
-
         //音乐按钮切换逻辑
         function toggleMusicPlayPause(){
             const audioDom = document.getElementById('bgMusic');
@@ -421,7 +421,6 @@
                 musicToggleBtn.innerText = '🔈继续背景音乐';
             }
         }
-
         //气泡类：汽水泡泡
         class Bubble{
             constructor(baseScale){
@@ -455,7 +454,6 @@
                 grad.addColorStop(0,"rgba(255,255,255,0.95)");
                 grad.addColorStop(0.4,"rgba(240,248,255,0.6)");
                 grad.addColorStop(1,"rgba(200,230,255,0.15)");
-
                 ctx.beginPath();
                 ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
                 ctx.fillStyle = grad;
@@ -468,12 +466,10 @@
                 ctx.restore();
             }
         }
-
         //主循环：汽水冒泡
         function drawSodaBubbles(){
             ctx.clearRect(0,0,canvas.width,canvas.height);
             time +=0.024;
-
             //音频频谱计算缩放
             let targetScale = 1.0;
             if(analyser && spectrumData){
@@ -485,13 +481,11 @@
             }
             beatScale += (targetScale - beatScale) * smoothFactor;
             updateRingScale(beatScale);
-
             //生成气泡，音乐节奏大时生成更多泡泡
             const spawnRate = 0.18 * beatScale;
             if(Math.random() < spawnRate){
                 bubbles.push(new Bubble(beatScale));
             }
-
             //更新&绘制所有气泡
             for(let i = bubbles.length-1;i>=0;i--){
                 const b = bubbles[i];
@@ -505,7 +499,6 @@
             requestAnimationFrame(drawSodaBubbles);
         }
         drawSodaBubbles();
-
         //初始化音频分析器（点击播放时调用）
         function initAudioAnalyser(){
             const audioDom = document.getElementById('bgMusic');
@@ -519,7 +512,6 @@
             sourceNode.connect(analyser);
             analyser.connect(audioCtx.destination);
         }
-
          // ============【泡泡绘制结束；下面保留原有整套祝福业务逻辑】============
         const messages = [
             "今天你又忙碌了很久，先别想其他的，好好休息✨",
@@ -556,25 +548,25 @@
         ];
         const waitPopupTexts = [
             "系统正在疯狂加载中！已经在猛敲键盘啦，再给我一丢丢时间～",
-            "别急别急！我这就快马加鞭处理，再等亿秒，悄悄话马上到董碗里来！",
+            "别急别急！我这就快马加鞭处理，再等亿秒，悄悄话马上到悦碗里来！",
             "哎呀呀，暖心话语正在慢悠悠赶路～ 马上就好，不许催我呀！",
             "等待是为更好的展示，正在把暖心内容加载中～",
-            "叮！系统已收到董的指令，正在全力冲刺处理，稍等片刻！",
-            "报告董！加载进度条正在奋力奔跑，再给它点时间，马上完成使命～",
+            "叮！系统已收到悦的指令，正在全力冲刺处理，稍等片刻！",
+            "报告悦！加载进度条正在奋力奔跑，再给它点时间，马上完成使命～",
             "咱就是说！正在偷偷给你打包悄悄话，加载慢是因为塞了很多心意~ 再等等哈😜",
             "施法刚给代码加了个小花buff，加载会慢一丢丢，但心意直接拉满🥹",
             "加载进度条正在摸鱼吃零食！我已经催它啦，马上揣着暖心话跑过来🤣",
             "别催别催~ 系统正在给你的悄悄话镀上亮晶晶的糖衣，这步慢但超好看✨",
-            "报告董长官！加载队列排了一堆小花，我正在挨个给它们贴“专属”标签~ 马上好😎",
-            "数据小弟说它想给董整个惊喜，现在在翻暖心库存找最贴心的那条，稍等亿下下~",
+            "报告悦长官！加载队列排了一堆小花，我正在挨个给它们贴“专属”标签~ 马上好😎",
+            "数据小弟说它想给悦整个惊喜，现在在翻暖心库存找最贴心的那条，稍等亿下下~",
             "刚把代码里的“普通加载”换成了“鲜花加载”，速度慢但仪式感拉满~",
             "加载ing！其实是我在偷偷往里面塞内容，再等亿秒就能收到双倍温暖啦🥰",
             "正在给悄悄话加珍珠奶茶底～ 甜度刚刚好需要慢一点调试，马上送到你嘴边😋",
             "偷偷抓包！已经加急加载，悄悄话亿秒内到账🎮",
             "把悄悄话和零食搞混啦～ 正在分拣暖心款，不含卡路里请放心😝",
-            "暖心小分队迷路啦！正在用小花导航定位董，再等一丢丢就到📍",
+            "暖心小分队迷路啦！正在用小花导航定位悦，再等一丢丢就到📍",
             "进度条在撒娇求摸摸～ 摸完它就飞快跑过来，给你满满悄悄话🥰",
-            "正在把悄悄话加热到37℃（温柔适配）～ 适配董小盆友的胃口，马上好🌡️",
+            "正在把悄悄话加热到37℃（温柔适配）～ 适配悦小盆友的胃口，马上好🌡️",
             "洋盆友别急！我要检查有没有漏了暖心话，如果不够贴心就要返工，再等亿秒就好🍯"
         ];
         const floatEmojisPool = ["🌸","🌼","🐱","🐏","🌷","🦋","💐","🐿️","🐶","🦊","🐇","🌺"];
@@ -597,10 +589,8 @@
         let audioTimeoutTimer = null;
         let playMonitorTimer = null;
         let isAudioWaiting = false;
-
         //绑定音乐切换按钮点击事件
         musicToggleBtn.addEventListener('click',toggleMusicPlayPause);
-
         window.addEventListener('load', function() {
             initAudioLoad();
             startWaitPopups();
@@ -618,7 +608,6 @@
                 if(waitPopupTimer) clearInterval(waitPopupTimer);
             });
         });
-
         function startSmoothProgress() {
             smoothProgressTimer = setInterval(() => {
                 if (musicPreloaded || currentPercent >= 100) {
@@ -634,7 +623,6 @@
                 updateProgressDisplay(currentPercent);
             }, 50);
         }
-
         function initAudioLoad() {
             bgMusic.addEventListener('canplaythrough', function onCanPlay() {
                 clearTimeout(audioTimeoutTimer);
@@ -662,7 +650,6 @@
                 musicToggleBtn.innerText = '🔇音乐尚未播放';
             });
         }
-
         function completePreload() {
             clearInterval(waitPopupTimer);
             blessingBtn.disabled = false;
@@ -673,7 +660,6 @@
                 closePopup(activeWaitPopup);
             }
         }
-
         function forceCompleteLoad() {
             if (musicPreloaded) return;
             clearInterval(waitPopupTimer);
@@ -687,7 +673,6 @@
                 closePopup(activeWaitPopup);
             }
         }
-
         function updateProgressDisplay(percent) {
             const displayPercent = Math.floor(percent);
             progressFill.style.width = `${percent}%`;
@@ -698,7 +683,6 @@
                 isBurstAnimated = true;
             }
         }
-
         function triggerHeartBurst() {
             const progressBarRect = progressBar.getBoundingClientRect();
             const burstX = progressBarRect.left + progressBarRect.width / 2;
@@ -723,7 +707,6 @@
                 }
             }, 300);
         }
-
         function createFloatHeart() {
             const floatHeart = document.createElement('div');
             floatHeart.className = 'float-heart';
@@ -747,7 +730,6 @@
                 }
             }, (randomDelay + randomDuration) * 1000);
         }
-
         function startBlessings() {
             if (!musicPlayed) {
                 if (bgMusic.readyState >= 2) {
@@ -797,7 +779,6 @@
             blessingBtn.disabled = true;
             blessingBtn.textContent = '加载中...🎵';
         }
-
         function startAudioPlay() {
             initAudioAnalyser();
             if(audioCtx && audioCtx.state === 'suspended'){
@@ -814,13 +795,11 @@
             }, 1000);
             musicToggleBtn.innerText = '🔊暂停背景音乐';
         }
-
         function handleVisibilityChange() {
             if (musicPlayed && !document.hidden && bgMusic.paused && !bgMusic.ended && !isAudioWaiting) {
                 bgMusic.play().catch(()=>{});
             }
         }
-
         function createRandomBlessing() {
             if (remainingMessages.length === 0) return;
             const template = document.querySelector('.popup-template');
@@ -862,7 +841,6 @@
                 }
             }, 1000);
         }
-
         function createWaitPopup() {
             const template = document.querySelector('.wait-popup-template');
             const templatePopup = template.querySelector('.popup-content');
@@ -909,7 +887,6 @@
                 }
             }, 1000);
         }
-
         function closePopup(popup) {
             popup.style.opacity = '0';
             popup.style.transform = 'translateY(20px)';
@@ -919,7 +896,6 @@
                 }
             }, 300);
         }
-
         function startWaitPopups() {
             waitPopupTimer = setInterval(() => {
                 if (musicPreloaded) {
@@ -929,7 +905,6 @@
                 if (!isWaitPopupShowing) createWaitPopup();
             }, 8000);
         }
-
         blessingBtn.addEventListener('click', function() {
             if (blessingBtn.disabled) return;
             blessingBtn.disabled = true;
